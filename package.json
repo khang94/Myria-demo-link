@@ -46,7 +46,7 @@
   "scripts": {
     "build:style": "tailwind build src/styles/index.css -o src/styles/tailwind.css",
     "start": "craco start",
-    "build": "craco build",
+    "build": "npx yarn-deduplicate && yarn && craco build",
     "lint": "eslint . --ext .ts,.tsx",
     "lint:fix": "eslint . --ext .ts,.tsx --fix",
     "tslint": "tsc --noEmit && eslint . --ext .ts,.tsx",

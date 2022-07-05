@@ -1,0 +1,66 @@
+{
+  "extends": ["prettier", "react-app"],
+  "parser": "@typescript-eslint/parser",
+  "env": {
+    "browser": true,
+    "commonjs": true,
+    "es6": true,
+    "jest": true,
+    "node": true
+  },
+  "overrides": [
+    {
+      "files": ["*.ts", "*.mts", "*.cts", "*.tsx"],
+      "rules": {
+        "no-undef": "off"
+      }
+    }
+  ],
+  "rules": {
+    "no-console": "off",
+    "import/prefer-default-export": "off",
+    "@typescript-eslint/camelcase": ["off"],
+    "camelcase": ["off"],
+    "react/jsx-props-no-spreading": ["off"],
+    "jsx-a11y/no-static-element-interactions": "off",
+    "react/prop-types": ["off"],
+    "jsx-a11y/href-no-hash": ["off"],
+    "jsx-a11y/click-events-have-key-events": ["off"],
+    "import/no-unresolved": ["off"],
+    "import/extensions": 0,
+    "no-use-before-define": "off",
+    "react/jsx-uses-react": "off",
+    "react/react-in-jsx-scope": "off",
+    "arrow-parens": "off",
+    "operator-linebreak": "off",
+    "jsx-a11y/label-has-associated-control": "off",
+    "no-extra-semi": "off",
+    "react/button-has-type": "off",
+    "no-unused-vars": "off",
+    "react/jsx-one-expression-per-line": "off",
+    "no-trailing-spaces": "off",
+    "prefer-template": "off",
+    "react/no-array-index-key": "off",
+    "no-shadow": "off",
+    "react/jsx-filename-extension": [
+      "warn",
+      {
+        "extensions": [".js", ".jsx", ".tsx", ".ts"]
+      }
+    ],
+    "max-len": [
+      "warn",
+      {
+        "code": 100,
+        "tabWidth": 2,
+        "comments": 80,
+        "ignoreComments": false,
+        "ignoreTrailingComments": true,
+        "ignoreUrls": true,
+        "ignoreStrings": true,
+        "ignoreTemplateLiterals": true,
+        "ignoreRegExpLiterals": true
+      }
+    ]
+  }
+}
