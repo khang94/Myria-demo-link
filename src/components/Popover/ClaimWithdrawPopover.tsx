@@ -34,6 +34,8 @@ enum STATUS {
 
 declare let window: any;
 
+const QUANTUM_CONSTANT = 10000000000;
+
 export default function ClaimWithdrawPopover({
   abbreviationAddress,
   onClosePopover = () => {},
@@ -69,7 +71,7 @@ export default function ClaimWithdrawPopover({
         const assetType = asset.getAssetType({
           type: 'ETH',
           data: {
-            quantum: '1',
+            quantum: QUANTUM_CONSTANT.toString(),
           },
         });
         const result = await withdrawModule.withdrawalOnchain(

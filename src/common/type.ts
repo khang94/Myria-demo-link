@@ -4,4 +4,4 @@ export enum TokenType {
   ERC721 = 'ERC721',
   MINTABLE_ERC20 = 'MINTABLE_ERC20',
   MINTABLE_ERC721 = 'MINTABLE_ERC721',
-}
+};

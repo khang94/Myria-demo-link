@@ -30,7 +30,7 @@
     "ethers": "^5.4.6",
     "http-browserify": "^1.7.0",
     "https-browserify": "^1.0.0",
-    "myria-core-sdk": "0.0.40",
+    "myria-core-sdk": "0.0.42",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-error-overlay": "6.0.9",

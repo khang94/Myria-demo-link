@@ -27,6 +27,9 @@ const StarkwareLib = require('@starkware-industries/starkware-crypto-utils');
 
 const { asset } = StarkwareLib;
 declare const window: any;
+
+const QUANTUM_CONSTANT = 10000000000;
+
 interface TProps {
   children: JSX.Element | JSX.Element[];
 }
@@ -65,7 +68,7 @@ export default function MainLayout({ children }: TProps) {
       assetType = asset.getAssetType({
         type: 'ETH',
         data: {
-          quantum: '1',
+          quantum: QUANTUM_CONSTANT.toString(),
           // tokenAddress: '0xD5f1cC0264d0E22BE4488109dbf5d097eb37a576',
         },
       });

@@ -27,12 +27,12 @@ export default function MainScreen({
     options.map((option: any, index: number) => {
       let tempOption = option;
       let assetType: string;
-      const quantumConstant = 10000000000;
+      const QUANTUM_CONSTANT = 10000000000;
       if (option.name === 'Ethereum') {
         assetType = asset.getAssetType({
           type: 'ETH',
           data: {
-            quantum: quantumConstant.toString,
+            quantum: QUANTUM_CONSTANT.toString(),
           },
         });
       } else {
@@ -44,6 +44,8 @@ export default function MainScreen({
           },
         });
       }
+      console.log('hey---assetType', assetType);
+      console.log('hey---balanceList', balanceList);
       const matchedBalance = balanceList.filter(
         (item: any) => item.assetType === assetType,
       );
@@ -52,7 +54,7 @@ export default function MainScreen({
           option.name === 'Ethereum'
             ? Web3.utils.fromWei(
                 (
-                  matchedBalance[0].quantizedAmount * quantumConstant
+                  matchedBalance[0].quantizedAmount * QUANTUM_CONSTANT
                 ).toString(),
               )
             : matchedBalance[0].quantizedAmount;

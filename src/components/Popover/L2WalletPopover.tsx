@@ -103,6 +103,8 @@ enum SCREENS {
   WITHDRAW_COMPLETE,
 }
 
+const QUANTUM_CONSTANT = 10000000000;
+
 declare let window: any;
 
 export default function L2WalletPopover({
@@ -154,13 +156,12 @@ export default function L2WalletPopover({
       setBalance(balanceL1);
     } else {
       let assetType: string;
-      const quantumConstant = 10000000000;
 
       if (selectedToken.name === 'Ethereum') {
         assetType = asset.getAssetType({
           type: 'ETH',
           data: {
-            quantum: quantumConstant.toString(),
+            quantum: QUANTUM_CONSTANT.toString(),
           },
         });
       } else {
@@ -178,14 +179,19 @@ export default function L2WalletPopover({
           (item: any) => item.assetId === assetType,
         );
       }
-      if (exactBalance) {
+
+      if (exactBalance && exactBalance.length > 0) {
         setBalance(
           selectedToken.name === 'Ethereum'
             ? Web3.utils.fromWei(
-                (exactBalance[0].quantizedAmount * quantumConstant).toString(),
+                (
+                  exactBalance[0].quantizedAmount * QUANTUM_CONSTANT ?? 0
+                ).toString(),
               )
             : exactBalance[0].quantizedAmount,
         );
+      } else {
+        setBalance('0');
       }
     }
   };
@@ -280,11 +286,12 @@ export default function L2WalletPopover({
 
       const moduleFactory = new Modules.ModuleFactory(myriaClient);
       const withdrawModule = moduleFactory.getWithdrawModule();
+
       if (selectedToken.name === 'Ethereum') {
         const assetType = asset.getAssetType({
           type: 'ETH',
           data: {
-            quantum: '1',
+            quantum: QUANTUM_CONSTANT.toString(),
           },
         });
         await withdrawModule.withdrawalOffchain(
@@ -344,11 +351,12 @@ export default function L2WalletPopover({
 
   const getBalanceOfMyriaL1Wallet = async () => {
     let assetType: string = '';
+
     if (selectedToken.name === 'Ethereum') {
       assetType = asset.getAssetType({
         type: 'ETH',
         data: {
-          quantum: '1',
+          quantum: QUANTUM_CONSTANT.toString(),
           // tokenAddress: '0xD5f1cC0264d0E22BE4488109dbf5d097eb37a576',
         },
       });
