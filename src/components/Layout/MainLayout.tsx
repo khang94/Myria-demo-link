@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import Web3 from 'web3';
 import { useSelector, useDispatch } from 'react-redux';
 import { IMyriaClient, Modules, MyriaClient } from 'myria-core-sdk';
-import { asset } from '@starkware-industries/starkware-crypto-utils';
+
 import Sidebar from '../Sidebar';
 import Header from '../Header';
 import Modal from '../Modal';
@@ -23,6 +23,9 @@ import MessageDepositModal from '../Modal/MessageDepositModal';
 import MessageWithdrawModal from '../Modal/MessageWithdrawModal';
 // @ts-ignore
 
+const StarkwareLib = require('@starkware-industries/starkware-crypto-utils');
+
+const { asset } = StarkwareLib;
 declare const window: any;
 interface TProps {
   children: JSX.Element | JSX.Element[];
